@@ -7,7 +7,6 @@ const del = require('del');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const sync = require('browser-sync').create();
-const ghPages = require('gulp-gh-pages')
 
 
 function html() {
@@ -66,6 +65,5 @@ function buildFontsCSSDev() {
 
 
 exports.build = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev)
-exports.deploy = series(deploy)
 exports.serve = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev, js, serve)
 exports.clear = clear
