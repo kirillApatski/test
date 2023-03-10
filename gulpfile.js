@@ -7,6 +7,8 @@ const del = require('del');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const sync = require('browser-sync').create();
+const ghPages = require('gh-pages');
+const path = require('path');
 
 
 function html() {
@@ -63,7 +65,11 @@ function buildFontsCSSDev() {
 		.pipe(dest('dist/fonts'));
 }
 
+function deploy(cb) {
+	ghPages.publish(path.join(process.cwd(), './dist'), cb);
+}
 
-exports.build = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev)
+exports.build = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev, js)
+exports.deploy = series(deploy)
 exports.serve = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev, js, serve)
 exports.clear = clear
