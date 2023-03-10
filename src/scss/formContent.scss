@@ -1,0 +1,29 @@
+.formContent {
+	display: flex;
+	flex-direction: column;
+	background-color: #FFF;
+	background-image: url("../images/Shape.svg");
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	max-width: 527px;
+	width: 100%;
+	padding: 38.52px 22px 32.48px 20.8px;
+
+	.formContentTitle {
+		font-family: 'Work Sans', sans-serif;
+		font-weight: 400;
+		font-size: 22px;
+		line-height: 25.78px;
+		letter-spacing: -0.46px;
+		color: #111111;
+	}
+
+	.formContentDescription {
+		font-family: 'Work Sans', sans-serif;
+		font-weight: 200;
+		font-size: 14px;
+		line-height: 16px;
+		color: #111111;
+		margin-bottom: 20px;
+	}
+}
