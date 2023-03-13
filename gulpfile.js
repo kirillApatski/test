@@ -48,6 +48,7 @@ function serve() {
 	})
 
 	watch('src/**.html', series(html)).on('change', sync.reload)
+	watch('src/**.*js', series(js)).on('change', sync.reload)
 	watch('src/scss/**.scss', series(scss)).on('change', sync.reload)
 }
 function buildImagesDev() {
@@ -64,12 +65,11 @@ function buildFontsCSSDev() {
 	return src('./src/fonts/**.css')
 		.pipe(dest('dist/fonts'));
 }
-
 function deploy(cb) {
 	ghPages.publish(path.join(process.cwd(), './dist'), cb);
 }
 
 exports.build = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev, js)
 exports.deploy = series(deploy)
-exports.serve = series(clear, scss, html, buildImagesDev, buildFontsDev, buildFontsCSSDev, js, serve)
+exports.serve = series(clear, scss, html, js, buildImagesDev, buildFontsDev, buildFontsCSSDev,  serve)
 exports.clear = clear
